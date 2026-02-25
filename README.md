@@ -27,6 +27,19 @@ Resource Revaluation
 Tiered Progression
 潮力 → 電解 → 精製 → 海底プラントへ。
 
+なぜWatatsumiは海洋なのか？
+
+Create中心環境で絶海の孤島からスタートしたとき、
+海は広いのに“やること”が少なかった。
+
+プリズマリンは作れる。
+だが使い道がない。
+
+海は資源の宝庫であるはずなのに、
+工業の主役になれない。
+
+だから海を「工業の起点」にする。
+
 🧪 Planned Features (Early Roadmap)
 Phase 1
 
