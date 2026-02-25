@@ -11,9 +11,9 @@ import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
 // This class will not load on dedicated servers. Accessing client side code from here is safe.
-@Mod(value = Watatsumi.MODID, dist = Dist.CLIENT)
+@Mod(value = Watatsumi.MOD_ID, dist = Dist.CLIENT)
 // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-@EventBusSubscriber(modid = Watatsumi.MODID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = Watatsumi.MOD_ID, value = Dist.CLIENT)
 public class WatatsumiClient {
     public WatatsumiClient(ModContainer container) {
         // Allows NeoForge to create a config screen for this mod's configs.
@@ -24,8 +24,6 @@ public class WatatsumiClient {
 
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
-        // Some client setup code
-        Watatsumi.LOGGER.info("HELLO FROM CLIENT SETUP");
-        Watatsumi.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+        // 今は何もしない
     }
 }
