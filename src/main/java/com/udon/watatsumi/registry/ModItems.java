@@ -23,6 +23,10 @@ public class ModItems {
             ITEMS.register("seawater_bucket",
                     () -> new BucketItem(Fluids.WATER,
                             new Item.Properties().stacksTo(1)));
+    // 塩
+    public static final DeferredHolder<Item, Item> SALT =
+            ITEMS.register("salt",
+                    () -> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

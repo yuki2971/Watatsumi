@@ -1,0 +1,27 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="watatsumi"
+version="1.0.0"
+displayName="Watatsumi"
+authors="udon"
+description='''
+Watatsumi Mod
+Ocean-based resource expansion mod.
+'''
+
+[[dependencies.watatsumi]]
+modId="neoforge"
+type="required"
+versionRange="[21.1.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.watatsumi]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1]"
+ordering="NONE"
+side="BOTH"
