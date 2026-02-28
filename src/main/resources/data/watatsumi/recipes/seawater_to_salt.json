@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    {
-      "item": "watatsumi:seawater_bucket"
-    }
-  ],
-  "result": "watatsumi:salt"
-}
