@@ -10,19 +10,18 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
 public class ModEvents {
 
     @SubscribeEvent
-    public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
+    public void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
 
         Level level = event.getLevel();
         if (level.isClientSide()) return;
@@ -32,7 +31,7 @@ public class ModEvents {
 
         Player player = event.getEntity();
 
-        // バニラと同じRayTraceを使う
+        // バニラと同じRayTrace
         BlockHitResult hit = BucketItem.getPlayerPOVHitResult(
                 level,
                 player,
@@ -43,27 +42,23 @@ public class ModEvents {
 
         BlockPos targetPos = hit.getBlockPos();
 
-        // 水でなければ終了
-        if (!level.getFluidState(targetPos).is(Fluids.WATER)) return;
+        // 水源のみ対象
+        if (!level.getFluidState(targetPos).isSource()) return;
 
-        // 海バイオームでなければ終了
+        // 海バイオームでなければ通常処理に任せる
         if (!level.getBiome(targetPos).is(BiomeTags.IS_OCEAN)) return;
 
-        // バニラ処理を止める
+        // ===== 海水取得処理 =====
+
+        // バニラ処理停止
         event.setCanceled(true);
         event.setCancellationResult(InteractionResult.SUCCESS);
 
-        // 海水バケツを渡す
-        player.setItemInHand(
-                event.getHand(),
-                new ItemStack(ModItems.SEAWATER_BUCKET.get())
-        );
-
-        // ===== ここから水除去処理 =====
+        // ===== 水除去処理（安全版） =====
 
         BlockState state = level.getBlockState(targetPos);
 
-        // waterlogged ブロックの場合
+        // waterlogged ブロックの場合は水だけ抜く
         if (state.hasProperty(BlockStateProperties.WATERLOGGED)
                 && state.getValue(BlockStateProperties.WATERLOGGED)) {
 
@@ -73,9 +68,15 @@ public class ModEvents {
                     11
             );
 
-        } else if (level.getFluidState(targetPos).isSource()) {
-
+        } else {
+            // 純粋な水ブロックのみ削除
             level.setBlock(targetPos, Blocks.AIR.defaultBlockState(), 11);
         }
+
+        // 海水バケツ付与
+        player.setItemInHand(
+                event.getHand(),
+                new ItemStack(ModItems.SEAWATER_BUCKET.get())
+        );
     }
 }

@@ -1,13 +1,14 @@
 package com.udon.watatsumi.item;
 
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.material.Fluids;
 
-public class SeawaterBucketItem extends Item {
+public class SeawaterBucketItem extends BucketItem {
 
-    public SeawaterBucketItem(Item.Properties properties) {
-        super(properties);
+    public SeawaterBucketItem(Properties properties) {
+        super(Fluids.WATER, properties);
     }
 
     @Override
