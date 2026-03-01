@@ -1,6 +1,7 @@
 package com.udon.watatsumi.registry;
 
 import com.udon.watatsumi.Watatsumi;
+import com.udon.watatsumi.item.SeawaterBucketItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
@@ -21,8 +22,9 @@ public class ModItems {
     //　海水バケツを追加
     public static final DeferredHolder<Item, Item> SEAWATER_BUCKET =
             ITEMS.register("seawater_bucket",
-                    () -> new BucketItem(Fluids.WATER,
-                            new Item.Properties().stacksTo(1)));
+                    () -> new SeawaterBucketItem(
+                            new Item.Properties().stacksTo(1)
+                    ));
     // 塩
     public static final DeferredHolder<Item, Item> SALT =
             ITEMS.register("salt",

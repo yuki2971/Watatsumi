@@ -8,7 +8,6 @@ import java.util.concurrent.CompletableFuture;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.world.item.Items;
 import com.udon.watatsumi.registry.ModItems;
 
 public class WatatsumiRecipeProvider extends RecipeProvider {
@@ -29,8 +28,8 @@ public class WatatsumiRecipeProvider extends RecipeProvider {
                         RecipeCategory.MISC,
                         ModItems.SALT.get()
                 )
-                .requires(Items.DIRT)
-                .unlockedBy("has_dirt", has(Items.DIRT))
+                .requires(ModItems.SEAWATER_BUCKET.get())
+                .unlockedBy("has_seawater_bucket", has(ModItems.SEAWATER_BUCKET.get()))
                 .save(recipeOutput);
     }
 }
