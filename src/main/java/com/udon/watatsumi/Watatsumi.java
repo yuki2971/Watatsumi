@@ -1,5 +1,6 @@
 package com.udon.watatsumi;
 
+import com.udon.watatsumi.datagen.ItemModelsProvider;
 import com.udon.watatsumi.registry.ModItems;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -37,6 +38,16 @@ public class Watatsumi {
                     new WatatsumiRecipeProvider(
                             output,
                             event.getLookupProvider()
+                    )
+            );
+        }
+        // Client側（item modelなど）
+        if (event.includeClient()) {
+            generator.addProvider(
+                    true,
+                    new ItemModelsProvider(
+                            output,
+                            event.getExistingFileHelper()
                     )
             );
         }
