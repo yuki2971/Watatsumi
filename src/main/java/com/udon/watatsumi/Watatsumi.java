@@ -1,7 +1,9 @@
 package com.udon.watatsumi;
 
 import com.udon.watatsumi.datagen.ItemModelsProvider;
+import com.udon.watatsumi.datagen.WatatsumiGlobalLootModifierProvider;
 import com.udon.watatsumi.registry.ModItems;
+import com.udon.watatsumi.registry.ModLootModifiers;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.ModContainer;
@@ -21,6 +23,9 @@ public class Watatsumi {
 
         // アイテム登録
         ModItems.register(modEventBus);
+
+        // Itemのloot管理登録
+        ModLootModifiers.LOOT_MODIFIERS.register(modEventBus);
 
         // 🌊 イベント登録（これが重要）
         NeoForge.EVENT_BUS.register(new ModEvents());
@@ -51,5 +56,13 @@ public class Watatsumi {
                     )
             );
         }
+        // loot用
+        event.getGenerator().addProvider(
+                event.includeServer(),
+                new WatatsumiGlobalLootModifierProvider(
+                        event.getGenerator().getPackOutput(),
+                        event.getLookupProvider()
+                )
+        );
     }
 }
