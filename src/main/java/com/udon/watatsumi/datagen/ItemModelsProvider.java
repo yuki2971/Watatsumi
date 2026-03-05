@@ -18,5 +18,6 @@ public class ItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.SALT.get());
         basicItem(ModItems.SEAWATER_BUCKET.get());
         basicItem(ModItems.TAMATEBAKO.get());
+        basicItem(ModItems.WOODEN_TUB.get());
     }
 }
