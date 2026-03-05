@@ -7,6 +7,8 @@ import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import com.udon.watatsumi.registry.ModBlocks;
+import net.minecraft.world.item.BlockItem;
 
 public class ModItems {
 
@@ -35,4 +37,10 @@ public class ModItems {
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
+
+    //ブロックアイテム登録
+    public static final DeferredHolder<Item, Item> WOODEN_TUB =
+            ITEMS.register("wooden_tub",
+                    () -> new BlockItem(ModBlocks.WOODEN_TUB.get(),
+                            new Item.Properties()));
 }

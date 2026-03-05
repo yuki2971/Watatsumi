@@ -2,6 +2,7 @@ package com.udon.watatsumi;
 
 import com.udon.watatsumi.datagen.ItemModelsProvider;
 import com.udon.watatsumi.datagen.WatatsumiGlobalLootModifierProvider;
+import com.udon.watatsumi.registry.ModBlocks;
 import com.udon.watatsumi.registry.ModItems;
 import com.udon.watatsumi.registry.ModLootModifiers;
 import net.neoforged.bus.api.IEventBus;
@@ -23,6 +24,8 @@ public class Watatsumi {
 
         // アイテム登録
         ModItems.register(modEventBus);
+        // ブロック登録
+        ModBlocks.register(modEventBus);
 
         // Itemのloot管理登録
         ModLootModifiers.LOOT_MODIFIERS.register(modEventBus);
