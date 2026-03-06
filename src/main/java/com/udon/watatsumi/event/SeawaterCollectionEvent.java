@@ -2,7 +2,10 @@ package com.udon.watatsumi.event;
 
 import com.udon.watatsumi.registry.ModItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BiomeTags;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BucketItem;
@@ -59,7 +62,10 @@ public class SeawaterCollectionEvent {
         BlockPos pos = hit.getBlockPos();
 
         // 水源ブロックでない場合は処理しない
-        if (!level.getFluidState(pos).isSource()) return;
+        var fluid = level.getFluidState(pos);
+
+        if (!fluid.isSource()) return;
+        if (!fluid.is(FluidTags.WATER)) return;
 
         // 海バイオームでない場合は通常の水扱い
         if (!level.getBiome(pos).is(BiomeTags.IS_OCEAN)) return;
@@ -73,7 +79,15 @@ public class SeawaterCollectionEvent {
 
         // 水源ブロック削除
         removeWater(level, pos);
-
+        // 海水取得時の音再生
+        level.playSound(
+                null,
+                pos,
+                SoundEvents.BUCKET_FILL,
+                SoundSource.BLOCKS,
+                1.0F,
+                1.0F
+        );
         // Ocean Bucket → Seawater Bucket に変換
         player.setItemInHand(
                 event.getHand(),
@@ -106,10 +120,13 @@ public class SeawaterCollectionEvent {
         if (!stack.is(ModItems.WOODEN_TUB.get())) return;
 
         // クリックされたブロック位置
-        BlockPos pos = event.getHitVec().getBlockPos();
+        BlockPos pos = event.getPos();
 
         // 水源でない場合は処理しない
-        if (!level.getFluidState(pos).isSource()) return;
+        var fluid = level.getFluidState(pos);
+
+        if (!fluid.isSource()) return;
+        if (!fluid.is(FluidTags.WATER)) return;
 
         // 海でない場合は処理しない
         if (!level.getBiome(pos).is(BiomeTags.IS_OCEAN)) return;
@@ -126,11 +143,19 @@ public class SeawaterCollectionEvent {
 
         Player player = event.getEntity();
 
+        // 海水取得時の音再生
+        level.playSound(
+                null,
+                pos,
+                SoundEvents.BUCKET_FILL,
+                SoundSource.BLOCKS,
+                1.0F,
+                1.0F
+        );
         // 木桶 → 海水入り木桶
         player.setItemInHand(
                 event.getHand(),
-                new ItemStack(ModItems.WOODEN_TUB_FILLED.get())
-        );
+                new ItemStack(ModItems.WOODEN_TUB_FILLED.get()));
     }
 
 

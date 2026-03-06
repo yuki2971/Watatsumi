@@ -16,10 +16,7 @@ public class ModBlocks {
 
     public static final DeferredHolder<Block, Block> WOODEN_TUB =
             BLOCKS.register("wooden_tub",
-                    () -> new WoodenTubBlock());
-    public static final DeferredHolder<Block, Block> WOODEN_TUB_FILLED =
-            BLOCKS.register("wooden_tub_filled",
-                    () -> new WoodenTubBlock());
+                    WoodenTubBlock::new);
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);

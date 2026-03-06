@@ -48,9 +48,10 @@ public class ModItems {
             ITEMS.register("wooden_tub",
                     () -> new BlockItem(ModBlocks.WOODEN_TUB.get(),
                             new Item.Properties()));
-    //満たした木桶
+    //満たした木桶（BlockItemではなく通常Item）
     public static final DeferredHolder<Item, Item> WOODEN_TUB_FILLED =
             ITEMS.register("wooden_tub_filled",
-                    () -> new BlockItem(ModBlocks.WOODEN_TUB_FILLED.get(),
-                            new Item.Properties()));
+                    () -> new SeaContainerItem(
+                            new Item.Properties().stacksTo(1)
+                    ));
 }
