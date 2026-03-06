@@ -1,12 +1,15 @@
 package com.udon.watatsumi.block;
 
+import com.udon.watatsumi.block.state.TubState;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
+import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.core.BlockPos;
@@ -28,10 +31,19 @@ public class WoodenTubBlock extends Block {
                 .strength(1.5F)
                 .sound(SoundType.WOOD)
                 .noOcclusion());
+
+        this.registerDefaultState(this.stateDefinition.any()
+                .setValue(STATE, TubState.EMPTY));
     }
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(STATE);
+    }
+    public static final EnumProperty<TubState> STATE =
+            EnumProperty.create("state", TubState.class);
 }

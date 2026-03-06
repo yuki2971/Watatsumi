@@ -1,13 +1,12 @@
 package com.udon.watatsumi.registry;
 
 import com.udon.watatsumi.Watatsumi;
-import com.udon.watatsumi.item.SeawaterBucketItem;
+import com.udon.watatsumi.item.SeaContainerItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import com.udon.watatsumi.registry.ModBlocks;
 import net.minecraft.world.item.BlockItem;
 
 public class ModItems {
@@ -19,10 +18,16 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> TEST_ITEM =
             ITEMS.register("test_item",
                     () -> new Item(new Item.Properties()));
+    //　海バケツを追加
+    public static final DeferredHolder<Item, Item> OCEAN_BUCKET =
+            ITEMS.register("ocean_bucket",
+                    () -> new SeaContainerItem(
+                            new Item.Properties().stacksTo(1)
+                    ));
     //　海水バケツを追加
     public static final DeferredHolder<Item, Item> SEAWATER_BUCKET =
             ITEMS.register("seawater_bucket",
-                    () -> new SeawaterBucketItem(
+                    () -> new SeaContainerItem(
                             new Item.Properties().stacksTo(1)
                     ));
     // 塩
@@ -38,9 +43,14 @@ public class ModItems {
         ITEMS.register(eventBus);
     }
 
-    //ブロックアイテム登録
+    //木桶
     public static final DeferredHolder<Item, Item> WOODEN_TUB =
             ITEMS.register("wooden_tub",
                     () -> new BlockItem(ModBlocks.WOODEN_TUB.get(),
+                            new Item.Properties()));
+    //満たした木桶
+    public static final DeferredHolder<Item, Item> WOODEN_TUB_FILLED =
+            ITEMS.register("wooden_tub_filled",
+                    () -> new BlockItem(ModBlocks.WOODEN_TUB_FILLED.get(),
                             new Item.Properties()));
 }

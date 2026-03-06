@@ -16,8 +16,10 @@ public class ItemModelsProvider extends ItemModelProvider {
     protected void registerModels() {
         basicItem(ModItems.TEST_ITEM.get());
         basicItem(ModItems.SALT.get());
+        basicItem(ModItems.OCEAN_BUCKET.get());
         basicItem(ModItems.SEAWATER_BUCKET.get());
         basicItem(ModItems.TAMATEBAKO.get());
         basicItem(ModItems.WOODEN_TUB.get());
+        basicItem(ModItems.WOODEN_TUB_FILLED.get());
     }
 }

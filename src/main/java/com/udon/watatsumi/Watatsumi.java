@@ -25,7 +25,7 @@ public class Watatsumi {
         ModLootModifiers.LOOT_MODIFIERS.register(modEventBus);
 
         // 🌊 イベント登録（これが重要）
-        NeoForge.EVENT_BUS.register(new ModEvents());
+        new ModEvents();
 
     }
 }

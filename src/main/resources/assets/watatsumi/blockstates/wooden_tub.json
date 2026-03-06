@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "watatsumi:block/wooden_tub" }
+    "state=empty": { "model": "watatsumi:block/wooden_tub" },
+    "state=filled": { "model": "watatsumi:block/wooden_tub" },
+    "state=salt_ready": { "model": "watatsumi:block/wooden_tub" }
   }
 }
