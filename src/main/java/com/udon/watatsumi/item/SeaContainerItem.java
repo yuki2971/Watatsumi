@@ -45,6 +45,7 @@ public class SeaContainerItem extends Item {
     }
 
 
+
     /*
      * =========================================================
      * Wooden Tub Filled の設置処理
@@ -74,6 +75,10 @@ public class SeaContainerItem extends Item {
         Player player = context.getPlayer();
         BlockPos pos = context.getClickedPos().relative(context.getClickedFace());
 
+        if (!level.getBlockState(pos).canBeReplaced()) {
+            return InteractionResult.FAIL;
+        }
+
         /*
          * =====================================================
          * WoodenTubBlock を FILLED 状態で配置
@@ -84,7 +89,16 @@ public class SeaContainerItem extends Item {
                 .defaultBlockState()
                 .setValue(WoodenTubBlock.STATE, TubState.FILLED);
 
-        level.setBlock(pos, state, 3);
+        level.setBlock(pos, state, 11);
+        // サウンド再生
+        level.playSound(
+                null,
+                pos,
+                net.minecraft.sounds.SoundEvents.WOOD_PLACE,
+                net.minecraft.sounds.SoundSource.BLOCKS,
+                1.0F,
+                1.0F
+        );
 
         /*
          * =====================================================
@@ -96,6 +110,6 @@ public class SeaContainerItem extends Item {
             stack.shrink(1);
         }
 
-        return InteractionResult.SUCCESS;
+        return InteractionResult.sidedSuccess(level.isClientSide);
     }
 }
