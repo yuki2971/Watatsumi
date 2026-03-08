@@ -1,5 +1,6 @@
 package com.udon.watatsumi;
 
+import com.udon.watatsumi.client.ClientSetup;
 import com.udon.watatsumi.registry.ModBlocks;
 import com.udon.watatsumi.registry.ModItems;
 import com.udon.watatsumi.registry.ModLootModifiers;
@@ -27,5 +28,7 @@ public class Watatsumi {
         // 🌊 イベント登録（これが重要）
         new ModEvents();
 
+        // Clientの仕様を初期化
+        modEventBus.addListener(ClientSetup::onClientSetup);
     }
 }
