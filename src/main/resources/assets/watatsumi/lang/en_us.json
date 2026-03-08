@@ -1,5 +1,12 @@
 {
-  "item.watatsumi.test_item": "Test Item",
+  "block.watatsumi.wooden_tub": "Wooden Tub",
+
   "item.watatsumi.salt": "Salt",
-  "block.watatsumi.evaporation_block": "Evaporation Block"
+  "item.watatsumi.seawater_bucket": "Seawater Bucket",
+  "item.watatsumi.ocean_bucket": "Ocean Bucket",
+  "item.watatsumi.wooden_tub": "Wooden Tub",
+  "item.watatsumi.wooden_tub_filled": "Wooden Tub (Filled)",
+  "item.watatsumi.tamatebako": "Tamatebako",
+
+  "item.watatsumi.test_item": "Test Item"
 }

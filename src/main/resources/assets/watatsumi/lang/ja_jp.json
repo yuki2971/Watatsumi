@@ -1,10 +1,12 @@
 {
-  "item.watatsumi.test_item": "ワタツミテストアイテム１号",
+  "block.watatsumi.wooden_tub": "木桶",
+
   "item.watatsumi.salt": "塩",
   "item.watatsumi.seawater_bucket": "海水バケツ",
   "item.watatsumi.ocean_bucket": "海バケツ",
   "item.watatsumi.wooden_tub": "木桶",
+  "item.watatsumi.wooden_tub_filled": "木桶(満水)",
   "item.watatsumi.tamatebako": "玉手箱",
-  "block.watatsumi.wooden_tub": "木桶",
-  "block.watatsumi.evaporation_block": "Evaporation Block"
+
+  "item.watatsumi.test_item": "ワタツミテストアイテム１号"
 }

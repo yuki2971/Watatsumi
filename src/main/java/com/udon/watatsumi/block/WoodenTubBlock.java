@@ -79,10 +79,10 @@ public class WoodenTubBlock extends Block {
         level.playSound(
                 null,
                 pos,
-                SoundEvents.AMETHYST_BLOCK_CHIME,
+                SoundEvents.FIRE_EXTINGUISH,
                 SoundSource.BLOCKS,
-                0.7F,
-                1.2F
+                1.0F,
+                1.4F
         );
 
         level.setBlock(
@@ -105,23 +105,22 @@ public class WoodenTubBlock extends Block {
             return;
         }
 
-        if (random.nextInt(5) != 0) {
-            return;
+        for (int i = 0; i < 2; i++) {
+
+            double x = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.3;
+            double y = pos.getY() + 0.9;
+            double z = pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 0.3;
+
+            level.addParticle(
+                    ParticleTypes.CAMPFIRE_COSY_SMOKE,
+                    x,
+                    y,
+                    z,
+                    0.0,
+                    0.03,
+                    0.0
+            );
         }
-
-        double x = pos.getX() + 0.3 + random.nextDouble() * 0.4;
-        double y = pos.getY() + 0.9;
-        double z = pos.getZ() + 0.3 + random.nextDouble() * 0.4;
-
-        level.addParticle(
-                ParticleTypes.CLOUD,
-                x,
-                y,
-                z,
-                0.0,
-                0.02,
-                0.0
-        );
     }
 
     /*
@@ -165,10 +164,10 @@ public class WoodenTubBlock extends Block {
             level.playSound(
                     null,
                     pos,
-                    SoundEvents.ITEM_PICKUP,
+                    SoundEvents.SAND_BREAK,
                     SoundSource.BLOCKS,
-                    0.8F,
-                    1.0F
+                    0.9F,
+                    1.2F
             );
 
             level.setBlock(
@@ -197,6 +196,15 @@ public class WoodenTubBlock extends Block {
                 stack.is(ModItems.SEAWATER_BUCKET.get())) {
 
             if (!level.isClientSide) {
+
+                level.playSound(
+                        null,
+                        pos,
+                        SoundEvents.BUCKET_EMPTY,
+                        SoundSource.BLOCKS,
+                        1.0F,
+                        1.0F
+                );
 
                 level.setBlock(
                         pos,
