@@ -57,4 +57,10 @@ public class ModItems {
                     () -> new SeaContainerItem(
                             new Item.Properties().stacksTo(1)
                     ));
+    // MixingBlock用BlockItem
+    public static final DeferredHolder<Item, Item> MIXING_BLOCK =
+            ITEMS.register("mixing_block",
+                    () -> new BlockItem(ModBlocks.MIXING_BLOCK.get(),
+                            new Item.Properties().stacksTo(1)
+                    ));
 }

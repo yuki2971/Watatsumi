@@ -8,5 +8,7 @@
   "item.watatsumi.wooden_tub_filled": "Wooden Tub (Filled)",
   "item.watatsumi.tamatebako": "Tamatebako",
 
+  "block.watatsumi.mixing_block": "Mixing Block",
+  "container.watatsumi.mixing": "Mixing",
   "item.watatsumi.test_item": "Test Item"
 }

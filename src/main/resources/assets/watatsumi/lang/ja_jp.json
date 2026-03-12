@@ -8,5 +8,7 @@
   "item.watatsumi.wooden_tub_filled": "木桶(満水)",
   "item.watatsumi.tamatebako": "玉手箱",
 
+  "block.watatsumi.mixing_block": "混合台",
+  "container.watatsumi.mixing": "混合",
   "item.watatsumi.test_item": "ワタツミテストアイテム１号"
 }

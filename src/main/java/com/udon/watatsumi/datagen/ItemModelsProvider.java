@@ -21,5 +21,6 @@ public class ItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.TAMATEBAKO.get());
         basicItem(ModItems.WOODEN_TUB.get());
         basicItem(ModItems.WOODEN_TUB_FILLED.get());
+        basicItem(ModItems.MIXING_BLOCK.get());
     }
 }
