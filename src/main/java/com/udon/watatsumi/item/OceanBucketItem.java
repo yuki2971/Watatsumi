@@ -13,10 +13,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.level.ClipContext;
@@ -45,7 +45,9 @@ public class OceanBucketItem extends Item {
             return InteractionResultHolder.pass(stack);
         }
 
-        if (!level.getBiome(pos).is(BiomeTags.IS_OCEAN)) {
+        var biome = level.getBiome(pos);
+
+        if (!(biome.is(BiomeTags.IS_OCEAN) || biome.is(BiomeTags.IS_BEACH))) {
             return InteractionResultHolder.pass(stack);
         }
 
@@ -53,21 +55,20 @@ public class OceanBucketItem extends Item {
 
             BlockState state = level.getBlockState(pos);
 
-            // waterloggedブロック対応
+            // waterloggedブロック対応 (これが無いと必ずブロックが消えるので必須)
             if (state.hasProperty(BlockStateProperties.WATERLOGGED)
                     && state.getValue(BlockStateProperties.WATERLOGGED)) {
 
                 level.setBlock(
                         pos,
                         state.setValue(BlockStateProperties.WATERLOGGED, false),
-                        11
+                        3
                 );
 
             } else {
 
-                level.setBlock(pos, Blocks.AIR.defaultBlockState(), 11);
+                level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
             }
-
             // 音再生
             level.playSound(
                     null,

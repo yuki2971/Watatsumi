@@ -81,3 +81,65 @@ Oceanは：
 - しかし戦略的価値がある
 
 という立ち位置を維持する
+
+Watatsumi - Design Overview
+海洋資源を利用し、海の文明を発展させるMinecraft Mod。
+Core Categories
+1. 資源 (Resources)
+   海から資源を得る。
+   Examples
+* 海水採取
+* 塩生成
+* 海底資源
+* 海洋素材
+  Notes
+* 文明のスタート地点
+* 木桶 → 塩 が最初の技術
+2. 食料 (Food)
+   海の食料生産。
+   Examples
+* 魚トラップ
+* 養殖
+* 海藻栽培
+* 塩保存
+  Notes
+* 海拠点を作る理由になる
+3. 機械・自動化 (Machinery & Automation)
+   海資源の生産を機械化。
+   Examples
+* 海水ポンプ
+* 蒸発装置
+* 海洋機械
+* 自動養殖
+  Notes
+* 中盤の発展段階
+4. 建築 (Architecture)
+   海素材を使った建築。
+   Examples
+* プリズマリン加工
+* 海洋建材
+* 海底建築
+  Notes
+* 海文明の表現
+5. 探索 (Exploration)
+   海を探索するコンテンツ。
+   Examples
+* 海底遺跡
+* 深海資源
+* 古代海文明
+  Notes
+* 冒険要素
+6. 魔法 (Mysticism)
+   海の神秘的な力。
+   Examples
+* 竜宮魔法
+* 深淵魔法
+* 海の加護
+  Notes
+* 神話は匂わせ程度
+* 世界観のロマン要素
+  Design Philosophy
+* 海を利用する文明の発展
+* 手作業から始まる技術
+* 海拠点を作る意味を作る
+* バニラMinecraftとの調和

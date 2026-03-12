@@ -24,7 +24,7 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> OCEAN_BUCKET =
             ITEMS.register("ocean_bucket",
                     () -> new OceanBucketItem(
-                            new Item.Properties().stacksTo(1)
+                            new Item.Properties().stacksTo(16)
                     ));
     //　海水バケツを追加
     public static final DeferredHolder<Item, Item> SEAWATER_BUCKET =

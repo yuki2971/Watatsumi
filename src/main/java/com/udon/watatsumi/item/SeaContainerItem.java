@@ -60,16 +60,16 @@ public class SeaContainerItem extends Item {
 
         Level level = context.getLevel();
 
-        // クライアント側では処理しない
-        if (level.isClientSide()) {
-            return InteractionResult.SUCCESS;
-        }
-
         ItemStack stack = context.getItemInHand();
 
         // Wooden Tub Filled 以外は通常処理
         if (!stack.is(ModItems.WOODEN_TUB_FILLED.get())) {
             return super.useOn(context);
+        }
+
+        // クライアント側では処理しない
+        if (level.isClientSide()) {
+            return InteractionResult.SUCCESS;
         }
 
         Player player = context.getPlayer();
@@ -109,7 +109,7 @@ public class SeaContainerItem extends Item {
         if (player != null && !player.getAbilities().instabuild) {
             stack.shrink(1);
         }
-
+        // クライアント側の仮レスポンス
         return InteractionResult.sidedSuccess(level.isClientSide);
     }
 }
