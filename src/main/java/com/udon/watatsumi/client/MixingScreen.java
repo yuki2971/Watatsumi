@@ -10,7 +10,7 @@ import net.minecraft.world.entity.player.Inventory;
 public class MixingScreen extends AbstractContainerScreen<MixingMenu> {
 
     private static final ResourceLocation TEXTURE =
-            ResourceLocation.withDefaultNamespace("textures/gui/container/crafting_table.png");
+            ResourceLocation.fromNamespaceAndPath("watatsumi", "textures/gui/mixing_block.png");
 
     public MixingScreen(MixingMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);

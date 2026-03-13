@@ -18,7 +18,7 @@ public class ModBlockLootProvider extends BlockLootSubProvider {
     protected void generate() {
 
         dropSelf(ModBlocks.WOODEN_TUB.get());
-
+        dropSelf(ModBlocks.MIXING_BLOCK.get());
     }
 
     @Override

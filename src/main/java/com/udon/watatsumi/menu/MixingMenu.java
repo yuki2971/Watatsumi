@@ -8,6 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.network.IContainerFactory;
 
 public class MixingMenu extends AbstractContainerMenu {
@@ -19,15 +20,22 @@ public class MixingMenu extends AbstractContainerMenu {
         super(ModMenus.MIXING.get(), id);
         this.container = container;
 
-        // スロット0: 土
-        addSlot(new Slot(container, 0, 56, 35));
-        // スロット1: 水バケツ
-        addSlot(new Slot(container, 1, 80, 35));
-        // スロット2: 結果（取り出しのみ）
-        addSlot(new Slot(container, 2, 116, 35) {
+        addSlot(new Slot(container, 0, 31, 38));
+        addSlot(new Slot(container, 1, 76, 38));
+        addSlot(new Slot(container, 2, 145, 39) {
             @Override
             public boolean mayPlace(ItemStack stack) {
                 return false;
+            }
+
+            @Override
+            public void onTake(Player player, ItemStack stack) {
+                // 土を1個消費
+                container.getItem(0).shrink(1);
+                // 水バケツを消費して空バケツを返す
+                container.getItem(1).shrink(1);
+                player.getInventory().add(new ItemStack(Items.BUCKET));
+                super.onTake(player, stack);
             }
         });
 
